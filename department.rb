@@ -1,15 +1,23 @@
-
+require_relative './employee'
 
 class Department
 
-  attr_accessor :department_names, :department_list
+  attr_accessor :name, :employees
 
-  def initialize
-    @department_names = ["IT", "Human Resources", "Analyist", "Office Support"]
+  def initialize (name)
+    @name = name
+    @employees = []
   end
 
-  def list_of_department_names
-    department_names.join(", ")
+  def names
+    names = []
+    @employees.each do |names|
+      name.join(", ")
+    end
   end
+
+    def assign_employee(employee)
+      self.employees << employee
+    end
 
 end
