@@ -16,8 +16,14 @@ class Department
     end
   end
 
-    def assign_employee(employee)
-      self.employees << employee
-    end
+  def assign_employee(employee)
+    employees << employee
+  end
+
+  def total_salary
+    self.reduce(:+)
+  end
+
+
 
 end

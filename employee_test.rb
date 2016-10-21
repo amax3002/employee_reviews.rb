@@ -14,7 +14,7 @@ class EmployeeTest <Minitest::Test
     "610-308-0539",
     "75000"
     )
-    assert_equal new_employee.employee_full_name, "Alex Guy"
+    assert_equal new_employee.full_name, "Alex Guy"
   end
 
   def test_employee_new_input_see_all_info
@@ -32,7 +32,7 @@ class EmployeeTest <Minitest::Test
     "610-306-8347",
     "175000"
     )]
-    assert_equal new_employees.employee_list, "Alex Guy"
+    assert_equal new_employees.full_name, "Alex Guy"
   end
 
 
