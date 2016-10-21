@@ -12,28 +12,11 @@ class EmployeeTest <Minitest::Test
     "IT",
     "amax3002@gmail.com",
     "610-308-0539",
-    "75000"
-    )
+    "75000",
+    "4454")
     assert_equal new_employee.full_name, "Alex Guy"
   end
 
-  def test_employee_new_input_see_all_info
-    new_employees = [Employee.new(
-    "Alex Guy",
-    "IT",
-    "amax3002@gmail.com",
-    "610-308-0539",
-    "75000"
-    ),
-    Employee.new(
-    "Larry Guy",
-    "HR",
-    "alguy@gmail.com",
-    "610-306-8347",
-    "175000"
-    )]
-    assert_equal new_employees.full_name, "Alex Guy"
-  end
 
 
 
