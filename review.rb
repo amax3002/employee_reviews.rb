@@ -1,10 +1,11 @@
 
 
 class Review
-  attr_accessor  :input, :status
+  attr_accessor  :input, :status, :employee_id
 
-  def initialize (input)
-    @input= input
+  def initialize (input, employee_id)
+    @input = input
+    @employee_id = employee_id
     @status = ""
   end
 

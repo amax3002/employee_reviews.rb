@@ -33,13 +33,13 @@ class Department
       self.reviews.map! { |el|
         if input == "Positive" && self.employees.include?(emp)
           if(el.status == "" || el.status == "Negative")
-            return el.status = input
+            return el.status =input
           else
             el.status
           end
-        elsif input == "Negative" && self.employees.include?(emp)
+        elsif input == "Negative" && self.employees.id == emp
           if(el.status == "" || el.status == "Positive")
-            return el.status = input
+            return input
           else
             el.status
           end
@@ -50,22 +50,22 @@ class Department
 
   def one_employee_review_update(employee_id, input)
     self.employees.map! { |element|
-      if element.id == employee_id
+      if element.id != employee_id
+        next
+      else
         self.reviews.map! { |el|
-          if input == "Positive" && element.id == employee_id
+          if input == "Positive"
             if(el.status == "" || el.status == "Negative")
-              return el.status = input
+              return el.status =input
             else
               el.status
             end
-          elsif input == "Negative" && element.id == employee_id
+          elsif input == "Negative"
             if(el.status == "" || el.status == "Positive")
-              return el.status = input
+              return input
             else
               el.status
             end
-          else
-            next
           end
         }
       end
