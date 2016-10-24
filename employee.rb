@@ -13,13 +13,20 @@ class Employee
   end
 
   def get_name_based_on_id(input)
-    name_catch = []
-    self.each do |names|
-      if input == names.id
-        name_catch << name.full_name
+      if input == self.id
+        full_name
       end
-    end
-    name_catch
+  end
+
+  def get_salary_based_on_id(input)
+      if input == self.id
+        salary
+      end
+  end
+
+  def change_salary_by_percent(change_amount_percent)
+    self.salary = (self.salary * change_amount_percent)
+    self.salary.to_i
   end
 
 end

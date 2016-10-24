@@ -35,7 +35,7 @@ class Department
 
 
   def one_employee_review_update(employee_id, input)
-    self.employees.map! { |element|
+    self.employees.each do |element|
       if element.id != employee_id
         next
       else
@@ -55,20 +55,20 @@ class Department
           end
         }
       end
-    }
+    end
   end
 
 
   def one_employee_salary_update(employee_id, salary_change)
-    self.employees.map { |element|
-      if element.id == employee_id
-        self.employees.map { |el|
-          el.salary = (el.salary.to_i * salary_change).to_s
-          return el.salary
-        }
+    self.employees do |el|
+      if el.id == employee_id
+        el.salary = (el.salary.to_i * salary_change).to_s
+        return el.salary
       end
 
-    }
+    end
+
+
   end
 
   def employee_salary_update_department(salary_change)
@@ -79,7 +79,7 @@ class Department
           return el.salary
         end
       end
-      }
-    end
+    }
+  end
 
 end
