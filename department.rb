@@ -27,24 +27,10 @@ class Department
   end
 
 
-  def find_employee_based_on_id(employee_id, input)
-    emp = self.employees.find { |element|
-      element.id == employee_id }
-      self.reviews.map! { |el|
-        if input == "Positive" && self.employees.include?(emp)
-          if(el.status == "" || el.status == "Negative")
-            return el.status =input
-          else
-            el.status
-          end
-        elsif input == "Negative" && self.employees.id == emp
-          if(el.status == "" || el.status == "Positive")
-            return input
-          else
-            el.status
-          end
-        end
-      }
+  def all_department_review_change(input)
+    self.reviews.each do |el|
+      el.status = input
+    end
   end
 
 
@@ -88,13 +74,12 @@ class Department
   def employee_salary_update_department(salary_change)
     self.reviews.map { |element|
       if element.status == "Positive"
-        self.employees.map { |el|
+        self.employees.each do |el|
           el.salary = (el.salary.to_i * salary_change).to_s
           return el.salary
-        }
+        end
       end
-
-    }
-  end
+      }
+    end
 
 end

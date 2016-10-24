@@ -9,4 +9,8 @@ class Review
     @status = ""
   end
 
+  def find_status(id)
+    {}
+  end
+
 end
