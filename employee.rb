@@ -1,8 +1,6 @@
-
-
 class Employee
 
-  attr_accessor :full_name, :email_address, :phone_number, :salary, :id
+  attr_accessor :full_name, :email_address, :phone_number, :salary, :id, :review
 
   def initialize(full_name, email_address, phone_number, salary, id)
     @full_name = full_name
@@ -27,6 +25,16 @@ class Employee
   def change_salary_by_percent(change_amount_percent)
     self.salary = (self.salary * change_amount_percent)
     self.salary.to_i
+  end
+
+  def get_review_status
+    review.status
+  end
+
+  def salary_change_if_positive_status(change_amount_percent)
+    if get_review_status == "Positive"
+      change_salary_by_percent(change_amount_percent)
+    end
   end
 
 end

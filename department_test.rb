@@ -53,6 +53,7 @@ class DepartmentTest <Minitest::Test
 
 
   def test_get_employees_department
+
     it_department = Department.new("IT")
     it_department.assign_employee(Employee.new(
     "Alex Guy",
@@ -74,6 +75,7 @@ class DepartmentTest <Minitest::Test
   end
 
   def test_get_employees_id
+
     it_department = Department.new("IT")
     it_department.assign_employee(Employee.new(
     "Alex Guy",
@@ -97,6 +99,7 @@ class DepartmentTest <Minitest::Test
 
 
   def test_get_depertment_total_salary
+
     it_department = Department.new("IT")
     it_department.assign_employee(Employee.new(
     "Alex Guy",
@@ -122,37 +125,35 @@ class DepartmentTest <Minitest::Test
 
   def test_update_one_employees_review_status
     it_department = Department.new("IT")
-    it_department.assign_employee(Employee.new(
+
+    alex = Employee.new(
     "Alex Guy",
     "amax3002@gmail.com",
     "610-308-0539",
     "75000",
     "4454")
-    )
+    alex.review = Review.new("Alex is a very positive person and encourages those around him, but he has not done well technically this year. There are two areas in which Zeke has room for improvement. First, when communicating verbally (and sometimes in writing), he has a tendency to use more words than are required. This conversational style does put people at ease, which is valuable, but it often makes the meaning difficult to isolate, and can cause confusion. Second, when discussing new requirements with project managers, less of the information is retained by Zeke long-term than is expected. This has a few negative consequences: 1) time is spent developing features that are not useful and need to be re-run, 2) bugs are introduced in the code and not caught because the tests lack the same information, and 3) clients are told that certain features are complete when they are inadequate. This communication limitation could be the fault of project management, but given that other developers appear to retain more information, this is worth discussing further.", "Positive")\
 
-    it_department. assign_review(Review.new("Alex is a very positive person and encourages those around him, but he has not done well technically this year. There are two areas in which Zeke has room for improvement. First, when communicating verbally (and sometimes in writing), he has a tendency to use more words than are required. This conversational style does put people at ease, which is valuable, but it often makes the meaning difficult to isolate, and can cause confusion. Second, when discussing new requirements with project managers, less of the information is retained by Zeke long-term than is expected. This has a few negative consequences: 1) time is spent developing features that are not useful and need to be re-run, 2) bugs are introduced in the code and not caught because the tests lack the same information, and 3) clients are told that certain features are complete when they are inadequate. This communication limitation could be the fault of project management, but given that other developers appear to retain more information, this is worth discussing further.", "4454"
-    ))
+    it_department.assign_employee(alex)
 
-    it_department.assign_employee(
-    Employee.new(
+    larry = Employee.new(
     "Larry Guy",
     "alguy@gmail.com",
     "610-306-8347",
     "175000",
     "6789")
-    )
 
-    it_department.assign_review(Review.new("Larry is a very negative person and encourages those around him, but he has not done well technically this year. There are two areas in which Zeke has room for improvement. First, when communicating verbally (and sometimes in writing), he has a tendency to use more words than are required. This conversational style does put people at ease, which is valuable, but it often makes the meaning difficult to isolate, and can cause confusion. Second, when discussing new requirements with project managers, less of the information is retained by Zeke long-term than is expected. This has a few negative consequences: 1) time is spent developing features that are not useful and need to be re-run, 2) bugs are introduced in the code and not caught because the tests lack the same information, and 3) clients are told that certain features are complete when they are inadequate. This communication limitation could be the fault of project management, but given that other developers appear to retain more information, this is worth discussing further.", "6789"
-    ))
+    larry.review = Review.new("Larry is a very positive person and encourages those around him, but he has not done well technically this year. There are two areas in which Zeke has room for improvement. First, when communicating verbally (and sometimes in writing), he has a tendency to use more words than are required. This conversational style does put people at ease, which is valuable, but it often makes the meaning difficult to isolate, and can cause confusion. Second, when discussing new requirements with project managers, less of the information is retained by Zeke long-term than is expected. This has a few negative consequences: 1) time is spent developing features that are not useful and need to be re-run, 2) bugs are introduced in the code and not caught because the tests lack the same information, and 3) clients are told that certain features are complete when they are inadequate. This communication limitation could be the fault of project management, but given that other developers appear to retain more information, this is worth discussing further.", "Negative")\
 
-    it_department.one_employee_review_update("6789", "Positive")
+    it_department.assign_employee(larry)
 
-    assert_equal it_department.reviews.employee_id == "6789", "Positive"
+    assert_equal it_department.employees.map {|e| e.review.status}, "Positive"
 
   end
 
 
   def test_update_one_employees_salary
+    skip
     it_department = Department.new("IT")
     it_department.assign_employee(Employee.new(
     "Alex Guy",
@@ -188,6 +189,7 @@ class DepartmentTest <Minitest::Test
 
 
   def test_update_all_employees_salary_if_positive_review
+    skip
     it_department = Department.new("IT")
     it_department.assign_employee(Employee.new(
     "Alex Guy",
@@ -233,6 +235,7 @@ class DepartmentTest <Minitest::Test
 
 
     def test_update_all_employees_review_status
+      skip
       it_department = Department.new("IT")
       it_department.assign_employee(Employee.new(
       "Alex Guy",

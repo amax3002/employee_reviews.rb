@@ -3,12 +3,11 @@ require_relative './review'
 
 class Department
 
-  attr_accessor :name, :employees, :reviews
+  attr_accessor :name, :employees
 
   def initialize (name)
     @name = name
     @employees = []
-    @reviews = []
   end
 
   def names
@@ -22,17 +21,11 @@ class Department
     employees << employee
   end
 
-  def assign_review(review)
-    reviews << review
-  end
-
-
   def all_department_review_change(input)
     self.reviews.each do |el|
       el.status = input
     end
   end
-
 
   def one_employee_review_update(employee_id, input)
     self.employees.each do |element|
@@ -72,14 +65,12 @@ class Department
   end
 
   def employee_salary_update_department(salary_change)
-    self.reviews.map { |element|
+    if self.reviews.map { |element|
       if element.status == "Positive"
-        self.employees.each do |el|
-          el.salary = (el.salary.to_i * salary_change).to_s
-          return el.salary
-        end
+        change_salary_by_percent(salary_change)
       end
-    }
-  end
 
+    }
+    end
+  end
 end
