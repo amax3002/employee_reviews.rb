@@ -27,31 +27,6 @@ class Department
     end
   end
 
-  def one_employee_review_update(employee_id, input)
-    self.employees.each do |element|
-      if element.id != employee_id
-        next
-      else
-        self.reviews.map! { |el|
-          if input == "Positive"
-            if(el.status == "" || el.status == "Negative")
-              return el.status =input
-            else
-              el.status
-            end
-          elsif input == "Negative"
-            if(el.status == "" || el.status == "Positive")
-              return input
-            else
-              el.status
-            end
-          end
-        }
-      end
-    end
-  end
-
-
   def sum_department_salary
     sum_array = []
     sum_array = self.employees.map { |el| el.salary }
@@ -71,6 +46,13 @@ class Department
 
   def change_employees_status_entire_department(status)
     self.employees.map do |employee|
+      employee.review.change_status(status)
+    end
+  end
+
+  def change_employees_status_by_id(id, status)
+    self.employees.map do |employee|
+      return unless employee.id == id
       employee.review.change_status(status)
     end
   end
