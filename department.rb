@@ -52,25 +52,28 @@ class Department
   end
 
 
-  def one_employee_salary_update(employee_id, salary_change)
-    self.employees do |el|
-      if el.id == employee_id
-        el.salary = (el.salary.to_i * salary_change).to_s
-        return el.salary
-      end
-
-    end
-
-
+  def sum_department_salary
+    sum_array = []
+    sum_array = self.employees.map { |el| el.salary }
+    sum_array = sum_array.inject(0) {|sum, i|  sum + i }
   end
 
-  def employee_salary_update_department(salary_change)
-    if self.reviews.map { |element|
-      if element.status == "Positive"
-        change_salary_by_percent(salary_change)
-      end
+  def show_every_employee_salary
+    status_array = []
+    status_array = self.employees.map { |el| el.review.status }
+  end
 
-    }
+  def salary_change_positive_status_employees(percent_increase)
+    self.employees.map do |employee|
+      employee.salary_change_if_positive_status(percent_increase)
     end
   end
+
+  def change_employees_status_entire_department(status)
+    self.employees.map do |employee|
+      employee.review.change_status(status)
+    end
+  end
+
+
 end
